@@ -10,6 +10,7 @@ namespace projectConsole
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("11");
         }
     }
 }
