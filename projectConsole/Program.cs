@@ -11,7 +11,11 @@ namespace projectConsole
 
         static void Main(string[] args)
         {
+            Console.SetWindowSize(102, 31);
+            Console.SetBufferSize(102, 31);
             Windows.MainMenu();
+
+
         }
     }
 }

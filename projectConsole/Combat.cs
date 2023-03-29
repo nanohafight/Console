@@ -6,39 +6,39 @@ using System.Threading.Tasks;
 
 namespace projectConsole
 {
-    class Combat
+    public static class Combat
     {
-        public void Fight()
+        public static void Combat_1()
         {
-            ConsoleKeyInfo key;
-            int playerX = 5, playerY = 10;
-            //int enemyX = 1, enemyY = 5;
-            //int playerHp = 10;
-
+            int aX = 5, aY = 10;            
             while (true)
             {
+                ConsoleKeyInfo key;
+                int tempX = aX;
+                int tempY = aY;
                 key = Console.ReadKey(true);
-                Console.Clear();
                 if (key.Key == ConsoleKey.UpArrow)
                 {
-                    playerY--;
+                    aY--;
                 }
                 else if (key.Key == ConsoleKey.DownArrow)
                 {
-                    playerY++;
+                    aY++;
                 }
                 else if (key.Key == ConsoleKey.LeftArrow)
                 {
-                    playerX--;
+                    aX--;
                 }
                 else if (key.Key == ConsoleKey.RightArrow)
                 {
-                    playerX++;
+                    aX++;
                 }
-
-                Console.SetCursorPosition(playerX, playerY);
+                Console.SetCursorPosition(tempX, tempY);
+                Console.Write("  ");
+                Console.SetCursorPosition(aX, aY);
                 Console.Write("♥");
+            }
             }
         }
     }
-}
+

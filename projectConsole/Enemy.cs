@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projectConsole
 {
-    class Enemy
+    public class Enemy
     {
         public string name { get; set; }
         public int hp { get; set; }
@@ -29,26 +29,39 @@ namespace projectConsole
             //Console.WriteLine(" S K L 3: {0} ", this.skil_3.name);
         }
     }
-    class Player : Enemy
+    class Servant : Enemy
     {
-        public bool isFight;
-        public List<Item> Inventory { get; set; }
-        public Player(string name, int hp, int mp)
+        public Servant(string name, int hp, int mp)
         {
             this.name = name;
             this.hp = hp;
             this.mp = mp;
             this.isAlive = true;
-            this.isFight = false;
-            this.Inventory = new List<Item>();
         }
-        public override void Showinfo()
+        public static Servant assasin = new Servant("assasin", 2200, 0);
+
+        class Player : Enemy
         {
-            base.Showinfo();
-            Console.WriteLine("■■■■■ Inventory ■■■■■");
-            foreach (var item in this.Inventory)
+            public bool isFight;
+            public List<Item> Inventory { get; set; }
+            public Player(string name, int hp, int mp)
             {
-                Console.WriteLine($"{item.name}, {item.amount}ea");
+                this.name = name;
+                this.hp = hp;
+                this.mp = mp;
+                this.isAlive = true;
+                this.isFight = false;
+                this.Inventory = new List<Item>();
+            }
+            public static Player player = new Player("Saber", 3200, 2150);
+            public override void Showinfo()
+            {
+                base.Showinfo();
+                Console.WriteLine("■■■■■ Inventory ■■■■■");
+                foreach (var item in this.Inventory)
+                {
+                    Console.WriteLine($"{item.name}, {item.amount}ea");
+                }
             }
         }
     }
