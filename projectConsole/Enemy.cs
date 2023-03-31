@@ -15,6 +15,8 @@ namespace projectConsole
         //public Skill skil_2 { get; set; }
         //public Skill skil_3 { get; set; }
         public bool isAlive { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
         public Enemy()
         {
 
@@ -37,32 +39,43 @@ namespace projectConsole
             this.hp = hp;
             this.mp = mp;
             this.isAlive = true;
+            this.x = 15;
+            this.y = 10;
         }
         public static Servant assasin = new Servant("assasin", 2200, 0);
-
-        class Player : Enemy
+    }
+    public class Player : Enemy
+    {
+        public bool isFight;
+        private List<Item> Inventory { get; set; }
+        public Player(string name, int hp, int mp)
         {
-            public bool isFight;
-            public List<Item> Inventory { get; set; }
-            public Player(string name, int hp, int mp)
+            this.name = name;
+            this.hp = hp;
+            this.mp = mp;
+            this.isAlive = true;
+            this.isFight = false;
+            this.Inventory = new List<Item>();
+            this.x = 50;
+            this.y = 25;
+        }
+        public static Player player = new Player("Saber", 3200, 2150);
+        public override void Showinfo()
+        {
+            base.Showinfo();
+            Console.WriteLine("■■■■■ Inventory ■■■■■");
+            foreach (var item in this.Inventory)
             {
-                this.name = name;
-                this.hp = hp;
-                this.mp = mp;
-                this.isAlive = true;
-                this.isFight = false;
-                this.Inventory = new List<Item>();
+                Console.WriteLine($"{item.name}, {item.amount}ea");
             }
-            public static Player player = new Player("Saber", 3200, 2150);
-            public override void Showinfo()
+        }
+        public void Showinven()
+        {
+            for(int i = 0; i < Inventory.Count; i++)
             {
-                base.Showinfo();
-                Console.WriteLine("■■■■■ Inventory ■■■■■");
-                foreach (var item in this.Inventory)
-                {
-                    Console.WriteLine($"{item.name}, {item.amount}ea");
-                }
+                Console.WriteLine($"{i}.{Inventory[i].name}, {Inventory[i].amount}ea");
             }
         }
     }
 }
+

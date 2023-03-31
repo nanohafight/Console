@@ -3,42 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace projectConsole
 {
     public static class Combat
     {
-        public static void Combat_1()
+        static void CharacterRender(Player player)
         {
-            int aX = 5, aY = 10;            
+            Console.SetCursorPosition(player.x, player.y);
+            Console.Write("♥");
             while (true)
             {
                 ConsoleKeyInfo key;
-                int tempX = aX;
-                int tempY = aY;
+                int tempX = player.x;
+                int tempY = player.y;
                 key = Console.ReadKey(true);
                 if (key.Key == ConsoleKey.UpArrow)
                 {
-                    aY--;
+                    player.y--;
                 }
                 else if (key.Key == ConsoleKey.DownArrow)
                 {
-                    aY++;
+                    player.y++;
                 }
                 else if (key.Key == ConsoleKey.LeftArrow)
                 {
-                    aX--;
+                    player.x--;
                 }
                 else if (key.Key == ConsoleKey.RightArrow)
                 {
-                    aX++;
+                    player.x++;
                 }
-                Console.SetCursorPosition(tempX, tempY);
+                else if (key.Key == ConsoleKey.Escape)
+                {
+                    Windows.ESCMenu(player);
+                }
+                    Console.SetCursorPosition(tempX, tempY);
+                
                 Console.Write("  ");
-                Console.SetCursorPosition(aX, aY);
+                Console.SetCursorPosition(player.x, player.y);
                 Console.Write("♥");
             }
-            }
+        }
+
+        public static void Combat_1(Player player)
+        {
+            Console.Clear();
+            Windows.MainMapRender();
+            CharacterRender(player);
+            
         }
     }
+}
 

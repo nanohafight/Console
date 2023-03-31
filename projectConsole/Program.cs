@@ -13,7 +13,8 @@ namespace projectConsole
         {
             Console.SetWindowSize(102, 31);
             Console.SetBufferSize(102, 31);
-            Windows.MainMenu();
+            Player saber = new Player("Saber", 3800, 2350);
+            Windows.MainMenu(saber);
 
 
         }
